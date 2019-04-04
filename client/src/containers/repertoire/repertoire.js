@@ -9,6 +9,8 @@ import { connect } from 'react-redux';
 import './repertoire.less';
 import {HOST} from '../../const/host'
 import _ from 'lodash';
+
+import {BannerBox} from '../../MyMoudules'
 @connect(
     state=>state.repertoire,
     {fetchBanner,fetchRecommend,fetchReSongsData}
@@ -35,41 +37,10 @@ class Repertoire extends Component {
     render() {
         return (
             <div id="repertoire">
-                <div className="banner">
-                    {
-                        this.props.bannerData?
-                            <Carousel
-                                autoplay={true}
-                                infinite
-                                selectedIndex={1}
-                                beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
-                                afterChange={index => console.log('slide to', index)}
-                            >
-                                {this.props.bannerData.map(val => (
-                                    <Link
-                                        key={val}
-                                        to={`${HOST}/albumdetail/3`}
-                                        style={{ display: 'inline-block', width: '100%'}}
-                                    >
-                                        <img
-                                            src={val}
-                                            alt=""
-                                            className="banner-img"
-                                            onLoad={() => {
-                                                // fire window resize event to change height
-                                                window.dispatchEvent(new Event('resize'));
-                                                this.setState({ imgHeight: 'auto' });
-                                            }}
-                                        />
-                                    </Link>
-                                ))}
-                            </Carousel>
-                            :
-                            ""
-                    }
-
-                </div>
+                {/* banner层代码 */}
+                <BannerBox />
                 <WhiteSpace></WhiteSpace>
+                {/* day推荐 */}
                 <Title title="每日推荐"></Title>
                 <div className="recommend">
                     {
