@@ -21,7 +21,7 @@ class Repertoire extends Component {
         this.state = {};
     }
     componentDidMount(){
-        this.props.fetchBanner();
+        // this.props.fetchBanner();
         this.props.fetchRecommend();
         this.props.fetchReSongsData()
     }
@@ -39,6 +39,7 @@ class Repertoire extends Component {
             <div id="repertoire">
                 {/* banner层代码 */}
                 <BannerBox />
+                {/* 空格 */}
                 <WhiteSpace></WhiteSpace>
                 {/* day推荐 */}
                 <Title title="每日推荐"></Title>
